@@ -30,15 +30,15 @@ def naked_twins(values):
     # Eliminate the naked twins as possibilities for their peers
 
     for unit in unitlist:
-        twos = []
+        twos = []			# contains all the values of length two
         twin = None
         for box in unit:
-            value = values[box]
+            value = values[box]		
             if len(value) == 2:
-                if value in twos:
-                    twin = box
+                if value in twos:	# finding the twin
+                    twin = box		
                     break
-                twos.append(value)
+                twos.append(value)	# adding values of length 2 to twos
 
         if twin is not None:
             for peer in unit:
@@ -61,8 +61,8 @@ boxes = cross(rows, cols)
 row_units = [cross(r, cols) for r in rows]
 column_units = [cross(rows, c) for c in cols]
 square_units = [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')]
-diagonals = [[r+c for r,c in zip(rows,cols)],[r+c for r,c in zip('IHGFEDCBA',cols)]]
-unitlist = row_units + column_units + square_units + diagonals
+diagonals = [[r+c for r,c in zip(rows,cols)],[r+c for r,c in zip('IHGFEDCBA',cols)]]	# Creating diagonal units and adding them to list of all the units
+unitlist = row_units + column_units + square_units + diagonals							# thus putting same constraint on them as other units
 units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
 peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 

@@ -7,7 +7,7 @@ A: For every unit (row, column, square or diagonal) we check for naked twins and
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: We take diagonals as units same as rows, columns and squares and proceed normally.
+A: We consider a diagonal as a unit same as rows, columns and squares which in turn applies the same constraint to them as other units, that it contains all the numbers from 1 to 9.
 
 ### Install
 
